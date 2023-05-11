@@ -1,7 +1,15 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
 
+const sribbitsURL = 'https://analytics.oracleswap.io/pair/0x0257781e4a628274040e88ed1540d55058dd9f3b'
+const sToadzURL = "https://sparklesnft.com/collection/songbird/stoadz"
 const ribbitsURL ='https://sologenic.org/trade?market=5249424249545300000000000000000000000000%2BrPmb5BPBAbE9jmNaFXNPH5kZEPDpRxaY77%2FXRP&network=mainnet'
+const sbcURL = 'https://sparklesnft.com/collection/songbird/songbirdcity/'
+const llURL = 'https://sparklesnft.com/collection/songbird/luxurylofts/'
+const xIouURL = 'https://sologenic.org/trade?market=78546F61647A0000000000000000000000000000%2BrpRW1FumRWhhaLmoYwS1SqEXsnCccvpsAU%2FXRP&network=mainnet'
+const xxlIouURL = 'https://sologenic.org/trade?market=78546F61647A58584C0000000000000000000000%2BrhiagNCMcF342muHW6oMgdsf9uutCWv5Vw%2FXRP&network=mainnet'
+const stsoURL = 'https://flaremetrics.io/songbird'
+const ftsoURL = 'https://flaremetrics.io/'
 
 
 const waitForIt = delay => new Promise(resolve => setTimeout(resolve, delay));
@@ -22,15 +30,22 @@ const scrapeLogic = async (res) => {
   try {
     const page = await browser.newPage();
 
-    await page.goto(ribbitsURL)
+    await page.goto(sribbitsURL)
     await waitForIt(5000)
       //"https://developer.chrome.com/");
 
 
-    const ribbitsPage = await page.evaluate(() => {
-      const price = document.querySelector("p").getAttribute('title');
-      return price;
-  });
+      
+    const sribbitsPage = await page.evaluate(() => {        
+      return document.querySelector("div.sc-bdVaJa.KpMoH.css-flugrv").innerText;
+   });
+
+
+
+  //   const ribbitsPage = await page.evaluate(() => {
+  //     const price = document.querySelector("p").getAttribute('title');
+  //     return price;
+  // });
   //#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p
     // // Set screen size
     // await page.setViewport({ width: 1080, height: 1024 });
@@ -50,7 +65,7 @@ const scrapeLogic = async (res) => {
     // const fullTitle = await textSelector.evaluate((el) => el.textContent);
 
     // Print the full title
-    const logStatement = `The result is ${ribbitsPage}`;
+    const logStatement = `The result is ${sribbitsPage}`;
     console.log(logStatement);
     res.send(logStatement);
   } catch (e) {
