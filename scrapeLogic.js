@@ -28,7 +28,7 @@ const scrapeLogic = async (res) => {
 
 
     const ribbitsPage = await page.evaluate(() => {
-      const price = document.querySelector("p .price").getAttribute('title');
+      const price = document.querySelector("p").getAttribute('title');
       return price;
   });
   //#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p
