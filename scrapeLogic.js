@@ -39,17 +39,19 @@ const scrapeLogic = async (res) => {
       var one = ''
       var two = ''
 
-      const data = await page.$$(".flex.items-center.justify-center.gap-x-2")
+
+
+    //   const sToadzData = await page.$$(".flex.items-center.justify-center.gap-x-2")
  
-      for (let i = 0; i < data.length; i++) {
-        const element = data[i];
-        const output = await element.$eval("p", element => element.textContent)
-        if (i === 1) {
-          one = output
-        } else if (i === 4) {
-          two = output
-        }     
-    }
+    //   for (let i = 0; i < data.length; i++) {
+    //     const element = data[i];
+    //     const output = await element.$eval("p", element => element.textContent)
+    //     if (i === 1) {
+    //       one = output
+    //     } else if (i === 4) {
+    //       two = output
+    //     }     
+    // }
      
       
   //   const sribbitsPage = await page.evaluate(() => {        
@@ -58,10 +60,10 @@ const scrapeLogic = async (res) => {
 
 
 
-  //   const ribbitsPage = await page.evaluate(() => {
-  //     const price = document.querySelector("p").getAttribute('title');
-  //     return price;
-  // });
+    const ribbitsPage = await page.evaluate(() => {
+      const price = document.querySelector(".price").innerText;
+      return price;
+  });
   //#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p
     // // Set screen size
     // await page.setViewport({ width: 1080, height: 1024 });
@@ -81,7 +83,7 @@ const scrapeLogic = async (res) => {
     // const fullTitle = await textSelector.evaluate((el) => el.textContent);
 
     // Print the full title
-    const logStatement = `The result is ${one}, ${two}`;
+    const logStatement = `The result is ${ribbitsPage}`;
     console.log(logStatement);
     res.send(logStatement);
   } catch (e) {
