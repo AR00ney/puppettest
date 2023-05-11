@@ -21,6 +21,7 @@ const scrapeLogic = async (res) => {
     const page = await browser.newPage();
 
     await page.goto(ribbitsURL)
+    
       //"https://developer.chrome.com/");
 
 
