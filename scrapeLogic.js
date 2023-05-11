@@ -30,15 +30,17 @@ const scrapeLogic = async (res) => {
   try {
     const page = await browser.newPage();
 
-    await page.goto(sribbitsURL)
+    await page.goto(sToadzURL)
     await waitForIt(5000)
       //"https://developer.chrome.com/");
 
 
+      const data = await page.$$(".flex.items-center.justify-center.gap-x-2")
+ 
       
-    const sribbitsPage = await page.evaluate(() => {        
-      return document.querySelector("div.sc-bdVaJa.KpMoH.css-flugrv").innerText;
-   });
+  //   const sribbitsPage = await page.evaluate(() => {        
+  //     return document.querySelector("div.sc-bdVaJa.KpMoH.css-flugrv").innerText;
+  //  });
 
 
 
@@ -65,7 +67,7 @@ const scrapeLogic = async (res) => {
     // const fullTitle = await textSelector.evaluate((el) => el.textContent);
 
     // Print the full title
-    const logStatement = `The result is ${sribbitsPage}`;
+    const logStatement = `The result is ${data}`;
     console.log(logStatement);
     res.send(logStatement);
   } catch (e) {
