@@ -35,8 +35,22 @@ const scrapeLogic = async (res) => {
       //"https://developer.chrome.com/");
 
 
+
+      var one = ''
+      var two = ''
+
       const data = await page.$$(".flex.items-center.justify-center.gap-x-2")
  
+      for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+        const output = await element.$eval("p", element => element.textContent)
+        if (i === 1) {
+          one = output
+        } else if (i === 4) {
+          two = output
+        }     
+    }
+     
       
   //   const sribbitsPage = await page.evaluate(() => {        
   //     return document.querySelector("div.sc-bdVaJa.KpMoH.css-flugrv").innerText;
@@ -67,7 +81,7 @@ const scrapeLogic = async (res) => {
     // const fullTitle = await textSelector.evaluate((el) => el.textContent);
 
     // Print the full title
-    const logStatement = `The result is ${data}`;
+    const logStatement = `The result is ${one}, ${two}`;
     console.log(logStatement);
     res.send(logStatement);
   } catch (e) {
