@@ -28,10 +28,10 @@ const scrapeLogic = async (res) => {
 
 
     const ribbitsPage = await page.evaluate(() => {
-      const price = document.querySelector(".price").getAttribute('title');
+      const price = document.querySelector("#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p").getAttribute('title');
       return price;
   });
-
+  //#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p
     // // Set screen size
     // await page.setViewport({ width: 1080, height: 1024 });
 
