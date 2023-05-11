@@ -4,6 +4,8 @@ require("dotenv").config();
 const ribbitsURL ='https://sologenic.org/trade?market=5249424249545300000000000000000000000000%2BrPmb5BPBAbE9jmNaFXNPH5kZEPDpRxaY77%2FXRP&network=mainnet'
 
 
+const waitForIt = delay => new Promise(resolve => setTimeout(resolve, delay));
+
 const scrapeLogic = async (res) => {
   const browser = await puppeteer.launch({
     args: [
@@ -21,7 +23,7 @@ const scrapeLogic = async (res) => {
     const page = await browser.newPage();
 
     await page.goto(ribbitsURL)
-    
+    await waitForIt(5000)
       //"https://developer.chrome.com/");
 
 
