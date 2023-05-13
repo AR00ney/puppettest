@@ -64,7 +64,7 @@ const scrapeLogic = async (res) => {
 
     for (let i = 0; i < data.length; i++) {
           const element = data[i];
-          const output = await element.$eval("p", element => element.textContent)
+          const output = await element.$eval("span", element => element.textContent)
           one = output     
       }
     //evaluate(() => {
