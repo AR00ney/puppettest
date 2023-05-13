@@ -67,11 +67,7 @@ const scrapeLogic = async (res) => {
           const output = await element.$eval("p", element => element.textContent)
           one = output     
       }
-    //evaluate(() => {
-      //const price = document.querySelector(".price").innerText;
-      //return price;
-  //});
-  //#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p
+    
     // // Set screen size
     // await page.setViewport({ width: 1080, height: 1024 });
 
