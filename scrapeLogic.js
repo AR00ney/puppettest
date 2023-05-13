@@ -60,11 +60,11 @@ const scrapeLogic = async (res) => {
 
 
 
-    const data = await page.$$(".price")
+    const data = await page.$$(".jss55")// jss55
 
     for (let i = 0; i < data.length; i++) {
           const element = data[i];
-          const output = await element.$eval("span", element => element.textContent)
+          const output = await element.$eval("p", element => element.textContent)
           one = output     
       }
     //evaluate(() => {
