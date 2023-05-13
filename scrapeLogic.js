@@ -30,7 +30,7 @@ const scrapeLogic = async (res) => {
   try {
     const page = await browser.newPage();
 
-    await page.goto(sToadzURL)
+    await page.goto(ribbitsURL)
     await waitForIt(5000)
       //"https://developer.chrome.com/");
 
@@ -60,10 +60,17 @@ const scrapeLogic = async (res) => {
 
 
 
-    const ribbitsPage = await page.evaluate(() => {
-      const price = document.querySelector(".price").innerText;
-      return price;
-  });
+    const data = await page.$$(".price")
+
+    for (let i = 0; i < data.length; i++) {
+          const element = data[i];
+          const output = await element.$eval("p", element => element.textContent)
+          one = output     
+      }
+    //evaluate(() => {
+      //const price = document.querySelector(".price").innerText;
+      //return price;
+  //});
   //#content-scroll > div > div.mobile_content > div:nth-child(2) > div > div:nth-child(1) > p
     // // Set screen size
     // await page.setViewport({ width: 1080, height: 1024 });
@@ -83,7 +90,7 @@ const scrapeLogic = async (res) => {
     // const fullTitle = await textSelector.evaluate((el) => el.textContent);
 
     // Print the full title
-    const logStatement = `The result is ${ribbitsPage}`;
+    const logStatement = `The result is ${one}`;
     console.log(logStatement);
     res.send(logStatement);
   } catch (e) {
